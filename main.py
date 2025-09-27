@@ -21,13 +21,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        pygame.display.flip()
-        hz = int(clock.tick(60))
-        dt = hz/1000
+        pygame.display.flip() 
+        dt = clock.tick(60)/1000
         
 
 
 
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
