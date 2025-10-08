@@ -4,7 +4,7 @@ from constants import SCREEN_WIDTH
 import player
 import asteroidfield
 import asteroid
-
+import sys
 
 def main():
     pygame.init()
@@ -25,6 +25,7 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
     
     while True:
+        dt = clock.tick(60)/1000
         updatable.update(dt)
         screen.fill("black")
         for thing in drawable:
@@ -32,8 +33,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        pygame.display.flip() 
-        dt = clock.tick(60)/1000
+        pygame.display.flip()
+        for collider in asteroids:
+            if c_player.collision(collider) == True:
+                print("Game over!")
+                sys.exit()
+        
         
 
 if __name__ == "__main__":
