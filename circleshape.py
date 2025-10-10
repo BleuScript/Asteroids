@@ -29,8 +29,3 @@ class CircleShape(pygame.sprite.Sprite):
         if distance <= r1+r2:
             return True
         
-class Shot(CircleShape):
-    def __init__(self,x,y,radius):
-        super().__init__(x, y, radius)
-        shots = pygame.sprite.Group()
-        Shot.container(updatable, drawable) # type: ignore
