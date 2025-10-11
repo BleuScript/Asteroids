@@ -16,7 +16,7 @@ def main():
     player.Player.containers = (updatable, drawable)
     asteroid.Asteroid.containers = (asteroids, updatable, drawable)
     asteroidfield.AsteroidField.containers = (updatable,)
-    shot.Shot.containers = (updatable, drawable)
+    shot.Shot.containers = (updatable, drawable, shots)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     asteroid_field = asteroidfield.AsteroidField()
     clock = pygame.time.Clock()
@@ -41,7 +41,11 @@ def main():
             if c_player.collision(collider) == True:
                 print("Game over!")
                 sys.exit()
-        
+            else:    
+                for c_shot in shots:
+                    if c_shot.collision(collider) == True:
+                        collider.split(dt)
+                        c_shot.kill()
         
 
 if __name__ == "__main__":
